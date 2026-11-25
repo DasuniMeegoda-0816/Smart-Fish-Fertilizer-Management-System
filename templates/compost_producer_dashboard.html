@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Compost Producer | Smart Fish</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='producer.css') }}">
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <h2>🌿 Smart Fish</h2>
+        <p>Compost Production Portal</p>
+        <nav>
+            <a href="#overview">🏠 Dashboard</a>
+            <a href="#waste">🐟 Received Waste</a>
+            <a href="#production">🏭 Production</a>
+            <a href="#inventory">📦 Fertilizer Stock</a>
+        </nav>
+        <form method="POST" action="/logout">
+            <button type="submit">Logout</button>
+        </form>
+    </aside>
+
+    <main class="content">
+        <header>
+            <div>
+                <small>COMPOST MANAGEMENT</small>
+                <h1>Producer Dashboard</h1>
+            </div>
+            <span class="profile">👤 {{ name }}</span>
+        </header>
+
+        <section class="welcome" id="overview">
+            <p>WELCOME BACK</p>
+            <h2>Hello, {{ name }}!</h2>
+            <p>Manage fish waste receiving, fertilizer
+               production and available inventory.</p>
+        </section>
+
+        <section class="stats">
+            <article>
+                <span>🐟</span>
+                <p>Available Collected Waste</p>
+                <h2 id="wasteCount">0</h2>
+            </article>
+            <article>
+                <span>🏭</span>
+                <p>Production Batches</p>
+                <h2 id="batchCount">0</h2>
+            </article>
+            <article>
+                <span>📦</span>
+                <p>Fertilizer Products</p>
+                <h2 id="productCount">0</h2>
+            </article>
+        </section>
+
+        <section class="panel" id="waste">
+            <h2>Available Fish Waste</h2>
+            <p>Collected fish waste awaiting receipt.</p>
+            <div id="wasteList" class="cards">
+                Loading waste records...
+            </div>
+        </section>
+
+        <section class="panel" id="production">
+            <h2>Fertilizer Production</h2>
+            <form id="productionForm">
+                <label for="receiptId">Received Waste</label>
+                <select id="receiptId" required>
+                    <option value="">Select Received Waste</option>
+                </select>
+
+                <label for="fertilizerId">Fertilizer Product</label>
+                <select id="fertilizerId" required>
+                    <option value="">Select Fertilizer</option>
+                </select>
+
+                <label for="quantity">Produced Quantity (kg)</label>
+                <input id="quantity" type="number"
+                       min="0.01" step="0.01" required>
+
+                <button type="submit">Record Production</button>
+            </form>
+            <p id="message" role="status"></p>
+        </section>
+
+        <section class="panel" id="inventory">
+            <h2>Fertilizer Inventory</h2>
+            <div id="inventoryList" class="cards">
+                Loading inventory...
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="{{ url_for('static', filename='producer.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; background: #f2f7f3; color: #26382b; }
+header { background: #176b42; color: white; text-align: center; padding: 30px 15px; }
+header h1 { margin: 0 0 12px; }
+nav { background: #114b30; padding: 15px; display: flex; justify-content: center; flex-wrap: wrap; gap: 25px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+nav a:hover { text-decoration: underline; }
+main { max-width: 950px; margin: auto; padding: 20px; }
+.hero { text-align: center; padding: 40px 20px; }
+.panel { background: white; padding: 25px; margin-bottom: 25px; border-radius: 12px; box-shadow: 0 3px 12px #0001; }
+h2, h3 { color: #176b42; }
+form { display: flex; flex-direction: column; gap: 10px; }
+label { font-weight: bold; }
+input, select { padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; }
+button { background: #218455; color: white; border: 0; padding: 13px; border-radius: 6px; font-size: 16px; cursor: pointer; margin-top: 10px; }
+button:hover { background: #176b42; }
+#wasteList li { padding: 10px; border-bottom: 1px solid #ddd; }
+#message { text-align: center; font-weight: bold; padding: 15px; }
+footer { text-align: center; background: #114b30; color: white; padding: 20px; }
+
+/* GUEST PRODUCT CARDS */
+
+.guest-products-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+}
+
+#guestProducts {
+    margin-top: 35px;
+}
+
+#guestProducts h2 {
+    color: #146c43;
+}
+
+#guestProducts a {
+    color: #176b46;
+    font-weight: 600;
+}
+
+/* HOMEPAGE FIX */
+
+#supplier,
+#farmer,
+#guestProducts {
+    background: white;
+    padding: 30px;
+    margin: 25px auto;
+    border-radius: 15px;
+    max-width: 1000px;
+    box-sizing: border-box;
+}
+
+#supplier h2,
+#farmer h2,
+#guestProducts h2,
+#supplier p,
+#farmer p,
+#guestProducts p,
+#supplier a,
+#farmer a,
+#guestProducts a {
+    text-decoration: none;
+}
+
+#supplier a,
+#farmer a,
+#guestProducts a {
+    color: #176b46;
+}
+
+#supplier a:hover,
+#farmer a:hover,
+#guestProducts a:hover {
+    text-decoration: underline;
+}
+
+/* ===== MODERN SMART FISH HOMEPAGE ===== */
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f3f8f4;
+    color: #203b30;
+}
+
+header {
+    background: linear-gradient(120deg, #10472f, #21865a);
+    color: white;
+    padding: 35px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: clamp(25px, 3vw, 38px);
+    margin: 0 0 12px;
+}
+
+header p {
+    margin: 0;
+    color: #e4f5e9;
+}
+
+nav {
+    background: #103f2d;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 17px;
+}
+
+nav a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #a5e2b7;
+}
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+.hero {
+    background: linear-gradient(120deg, #176b46, #31a174);
+    color: white;
+    border-radius: 20px;
+    padding: 50px 30px;
+    text-align: center;
+    margin: 20px 0 30px;
+}
+
+.hero h2 {
+    font-size: clamp(25px, 3vw, 36px);
+    color: white;
+    margin: 0 0 15px;
+}
+
+.hero p {
+    color: #edfff4;
+    font-size: 17px;
+}
+
+#supplier,
+#farmer,
+#guestProducts {
+    background: white;
+    border: 1px solid #e3eee6;
+    padding: 35px;
+    margin: 22px 0;
+    border-radius: 18px;
+    max-width: none;
+    box-shadow: 0 8px 24px rgba(20, 73, 45, 0.06);
+}
+
+#supplier h2,
+#farmer h2,
+#guestProducts h2 {
+    color: #12663f;
+    margin-top: 0;
+    font-size: 25px;
+}
+
+#supplier p,
+#farmer p,
+#guestProducts p {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+#supplier a,
+#farmer a {
+    display: inline-block;
+    background: #176b46;
+    color: white;
+    padding: 11px 18px;
+    margin: 8px 10px 0 0;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+#supplier a:hover,
+#farmer a:hover {
+    background: #105235;
+    color: white;
+    text-decoration: none;
+}
+
+.guest-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.guest-products-grid > div {
+    border: 1px solid #dceee3;
+    border-radius: 14px;
+    padding: 24px;
+    background: #f8fcf9;
+    box-shadow: none !important;
+}
+
+.guest-products-grid h3 {
+    color: #12663f;
+    margin-top: 0;
+}
+
+#guestProducts a {
+    color: #176b46;
+    font-weight: 700;
+}
+
+footer {
+    background: #103f2d;
+    color: white;
+    text-align: center;
+    padding: 24px;
+    margin-top: 35px;
+}
+
+@media (max-width: 600px) {
+    main { padding: 12px; }
+
+    .hero { padding: 35px 18px; }
+
+    #supplier,
+    #farmer,
+    #guestProducts {
+        padding: 24px 18px;
+    }
+
+    nav { gap: 15px; }
+}

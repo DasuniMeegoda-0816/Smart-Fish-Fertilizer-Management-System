@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fish Supplier Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='supplier.css') }}">
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="logo">🐟</div>
+            <h2>Smart Fish</h2>
+            <p>Supplier Portal</p>
+        </div>
+
+        <nav>
+            <a href="#overview">🏠 Dashboard</a>
+            <a href="#add-waste">➕ Add Fish Waste</a>
+            <a href="#records">📋 My Waste Records</a>
+        </nav>
+
+        <form action="/logout" method="POST">
+            <button class="logout" type="submit">
+                Logout
+            </button>
+        </form>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+
+        <div class="topbar">
+            <div>
+                <p class="eyebrow">SUPPLIER PORTAL</p>
+                <h1>Dashboard Overview</h1>
+            </div>
+
+            <div class="profile">👤 {{ name }}</div>
+        </div>
+
+        <!-- Welcome Banner -->
+        <section class="welcome" id="overview">
+            <div>
+                <p>WELCOME BACK</p>
+                <h2>Hello, {{ name }}!</h2>
+                <p>
+                    Manage your fish waste and support
+                    sustainable fertilizer production.
+                </p>
+
+                <a href="#add-waste" class="action-link">
+                    + Register Fish Waste
+                </a>
+            </div>
+
+            <div class="illustration">🐟 🌿</div>
+        </section>
+
+        <!-- Statistics -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <span>📋</span>
+                <p>Total Waste Records</p>
+                <h2 id="totalRecords">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>⚖️</span>
+                <p>Total Waste Quantity</p>
+                <h2 id="totalQuantity">0 kg</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>✅</span>
+                <p>Available Records</p>
+                <h2 id="availableRecords">0</h2>
+            </div>
+
+        </section>
+
+        <!-- Fish Waste Form -->
+        <section class="panel" id="add-waste">
+
+            <p class="eyebrow">WASTE MANAGEMENT</p>
+            <h2>Register Fish Waste</h2>
+
+            <p class="description">
+                Enter the details of fish waste
+                available for collection.
+            </p>
+
+            <form id="supplierWasteForm">
+
+                <label for="wasteLocation">
+                    Collection Location
+                </label>
+
+                <input
+                    id="wasteLocation"
+                    type="text"
+                    maxlength="150"
+                    placeholder="Enter collection location"
+                    required
+                >
+
+                <label for="wasteQuantity">
+                    Fish Waste Quantity (kg)
+                </label>
+
+                <input
+                    id="wasteQuantity"
+                    type="number"
+                    min="0.01"
+                    max="99999999"
+                    step="0.01"
+                    placeholder="Enter quantity in kg"
+                    required
+                >
+
+                <button type="submit">
+                    Register Fish Waste
+                </button>
+            </form>
+
+            <p id="formMessage"
+               role="status"
+               aria-live="polite"></p>
+        </section>
+
+        <!-- Waste Records -->
+        <section class="panel" id="records">
+
+            <p class="eyebrow">MY ACTIVITIES</p>
+            <h2>My Fish Waste Records</h2>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Waste ID</th>
+                            <th>Location</th>
+                            <th>Quantity</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="wasteTableBody">
+                        <tr>
+                            <td colspan="4">
+                                Loading records...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <footer>
+            Smart Fish Fertilizer Management System
+        </footer>
+    
+<section class="panel" id="collection-requests">
+
+    <p class="eyebrow">COLLECTION MANAGEMENT</p>
+    <h2>Request Fish Waste Collection</h2>
+
+    <p class="description">
+        Select a registered fish waste record
+        and request collection.
+    </p>
+
+    <form id="collectionRequestForm">
+
+        <label for="wasteSelect">
+            Select Fish Waste
+        </label>
+
+        <select id="wasteSelect" required>
+            <option value="">Select Waste Record</option>
+        </select>
+
+        <label for="collectionDate">
+            Preferred Collection Date
+        </label>
+
+        <input
+            type="date"
+            id="collectionDate"
+            required
+        >
+
+        <button type="submit">
+            Request Collection
+        </button>
+
+    </form>
+
+    <p id="collectionMessage" role="status"></p>
+
+    <h3>My Collection Requests</h3>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>Waste ID</th>
+                    <th>Requested Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody id="collectionTableBody">
+                <tr>
+                    <td colspan="4">
+                        Loading requests...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+    </main>
+</div>
+
+<script src="{{ url_for('static', filename='supplier.js') }}"></script>
+
+</body>
+</html>

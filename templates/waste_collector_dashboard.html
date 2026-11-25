@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Collector | Smart Fish</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='collector.css') }}">
+</head>
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">🚚</div>
+            <h2>Smart Fish</h2>
+            <p>Collection Portal</p>
+        </div>
+
+        <nav>
+            <a href="#overview">🏠 Dashboard</a>
+            <a href="#assignments">📋 My Assignments</a>
+            <a href="#completed">✅ Completed Collections</a>
+        </nav>
+
+        <form method="POST" action="/logout">
+            <button type="submit" class="logout">
+                Logout
+            </button>
+        </form>
+    </aside>
+
+    <main class="content">
+
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">WASTE COLLECTION</p>
+                <h1>Collector Dashboard</h1>
+            </div>
+            <div class="profile">👤 {{ name }}</div>
+        </header>
+
+        <section class="welcome" id="overview">
+            <p>WELCOME BACK</p>
+            <h2>Hello, {{ name }}!</h2>
+            <p>
+                View your assigned fish waste collections,
+                manage pickups, and update collection status.
+            </p>
+            <a href="#assignments" class="action-link">
+                View My Assignments
+            </a>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <span>📋</span>
+                <p>Total Assignments</p>
+                <h2 id="totalCount">0</h2>
+            </div>
+            <div class="stat-card">
+                <span>🚚</span>
+                <p>Assigned</p>
+                <h2 id="assignedCount">0</h2>
+            </div>
+            <div class="stat-card">
+                <span>✅</span>
+                <p>Collected</p>
+                <h2 id="collectedCount">0</h2>
+            </div>
+        </section>
+
+        <section class="panel" id="assignments">
+            <p class="eyebrow">COLLECTION MANAGEMENT</p>
+            <h2>My Assigned Collections</h2>
+            <p class="description">
+                Select Complete Collection after collecting
+                the fish waste from the supplier.
+            </p>
+
+            <p id="collectorMessage" role="status"
+               aria-live="polite"></p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Supplier</th>
+                            <th>Location</th>
+                            <th>Quantity</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="assignmentTable">
+                        <tr>
+                            <td colspan="7">
+                                Loading assignments...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="panel" id="completed">
+            <p class="eyebrow">COLLECTION HISTORY</p>
+            <h2>Completed Collections</h2>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Supplier</th>
+                            <th>Quantity</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="completedTable">
+                        <tr>
+                            <td colspan="4">
+                                Loading completed collections...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer>
+            Smart Fish Fertilizer Management System
+        </footer>
+
+    </main>
+</div>
+
+<script src="{{ url_for('static', filename='collector.js') }}"></script>
+</body>
+</html>

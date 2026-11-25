@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Smart Fish</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+
+<div class="layout">
+    <aside class="sidebar">
+        <div class="brand">
+            <span>🌿</span>
+            <h2>Smart Fish</h2>
+            <p>Administration Portal</p>
+        </div>
+
+        <nav>
+            <a href="#overview">🏠 Dashboard</a>
+            <a href="#collections">🚚 Collection Requests</a>
+            <a href="#assign">👥 Assign Collectors</a>
+        </nav>
+
+        <form action="/logout" method="POST">
+            <button class="logout" type="submit">
+                Logout
+            </button>
+        </form>
+    </aside>
+
+    <main class="content">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">ADMINISTRATION</p>
+                <h1>Dashboard Overview</h1>
+            </div>
+            <div class="profile">👤 {{ name }}</div>
+        </header>
+
+        <section class="welcome" id="overview">
+            <p>SMART FISH MANAGEMENT</p>
+            <h2>Welcome, {{ name }}!</h2>
+            <p>
+                Manage fish waste collections,
+                assign collectors and monitor requests.
+            </p>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <span>📋</span>
+                <p>Total Requests</p>
+                <h2 id="totalRequests">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>⏳</span>
+                <p>Pending Requests</p>
+                <h2 id="pendingRequests">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>🚚</span>
+                <p>Assigned Requests</p>
+                <h2 id="assignedRequests">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>✅</span>
+                <p>Collected Requests</p>
+                <h2 id="collectedRequests">0</h2>
+            </div>
+        </section>
+
+        <section class="panel" id="collections">
+            <p class="eyebrow">COLLECTION MANAGEMENT</p>
+            <h2>Fish Waste Collection Requests</h2>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Supplier</th>
+                            <th>Location</th>
+                            <th>Quantity</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="collectionTable">
+                        <tr>
+                            <td colspan="6">Loading requests...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="panel" id="assign">
+            <p class="eyebrow">COLLECTOR ASSIGNMENT</p>
+            <h2>Assign Waste Collector</h2>
+            <p class="description">
+                Select a pending collection request and
+                assign an available Waste Collector.
+            </p>
+
+            <form id="assignForm">
+                <label for="requestId">
+                    Pending Collection Request
+                </label>
+                <select id="requestId" required>
+                    <option value="">Select Request</option>
+                </select>
+
+                <label for="collectorId">
+                    Waste Collector
+                </label>
+                <select id="collectorId" required>
+                    <option value="">Select Collector</option>
+                </select>
+
+                <button type="submit">
+                    Assign Collector
+                </button>
+            </form>
+
+            <p id="assignMessage" role="status"
+               aria-live="polite"></p>
+        </section>
+        
+
+        
+
+
+<!-- ADMIN FARMER ORDER MANAGEMENT -->
+<section id="farmerOrders" class="content-card">
+    <p class="eyebrow">ORDER MANAGEMENT</p>
+    <h2>Manage Farmer Orders</h2>
+    <p>View fertilizer orders and update their status.</p>
+
+    <div style="overflow-x: auto;">
+        <table class="orders-table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Farmer</th>
+                    <th>Fertilizer</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="adminFarmerOrders">
+                <tr>
+                    <td colspan="6">Loading orders...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p id="adminOrderMessage" role="status"></p>
+</section>
+
+        <footer>
+            Smart Fish Fertilizer Management System
+        </footer>
+    </main>
+</div>
+
+<script src="{{ url_for('static', filename='admin.js') }}"></script>
+</body>
+</html>
