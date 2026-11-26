@@ -168,15 +168,21 @@ function initializeFarmerOrderForm() {
         }
     });
 }
+   
+function initializeFarmerPage() {
+    initializeFarmerOrderForm();
+    loadMyOrders();
+}
 
 if (document.readyState === "loading") {
     document.addEventListener(
         "DOMContentLoaded",
-        initializeFarmerOrderForm
+        initializeFarmerPage
     );
 } else {
-    initializeFarmerOrderForm();
+    initializeFarmerPage();
 }
+
 
 async function loadMyOrders() {
     const table = document.getElementById("myOrdersTable");

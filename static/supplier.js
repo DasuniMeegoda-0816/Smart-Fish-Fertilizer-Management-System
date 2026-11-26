@@ -1,4 +1,3 @@
-
 const wasteForm = document.getElementById("supplierWasteForm");
 const messageBox = document.getElementById("formMessage");
 const tableBody = document.getElementById("wasteTableBody");
@@ -119,6 +118,7 @@ async function loadCollectionOptions() {
     }
 
     const records = await response.json();
+     console.log("Collection dropdown records:", records);
 
     wasteSelect.replaceChildren();
 

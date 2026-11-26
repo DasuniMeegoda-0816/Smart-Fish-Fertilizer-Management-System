@@ -1,4 +1,3 @@
-
 const assignmentTable =
     document.getElementById("assignmentTable");
 

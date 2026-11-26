@@ -1,4 +1,3 @@
-
 const requestTable = document.getElementById("collectionTable");
 const requestSelect = document.getElementById("requestId");
 const collectorSelect = document.getElementById("collectorId");
